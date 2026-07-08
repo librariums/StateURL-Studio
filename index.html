@@ -6,79 +6,72 @@
   <title>StateURL Studio - Sandbox Autonome & Partageable</title>
   <style>
     :root {
-      /* Dark Mode (Default) */
-      --bg-main: #080b11;
-      --bg-surface: rgba(19, 26, 41, 0.75);
-      --border-color: rgba(255, 255, 255, 0.12);
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --primary: #00f0ff;
-      --primary-glow: rgba(0, 240, 255, 0.35);
+      /* Dark Mode - Industrial SaaS Theme */
+      --bg-main: #0a0a0a;
+      --bg-surface: #111111;
+      --border-color: #333333;
+      --text-main: #ededed;
+      --text-muted: #a1a1aa;
+      --primary: #ffffff;
+      --primary-text: #000000;
+      --primary-hover: #e5e5e5;
       --success: #10b981;
       --warning: #f59e0b;
       --error: #ef4444;
-      --dialog-bg: #111827;
-      --btn-primary-text: #000000;
-      --btn-secondary-bg: rgba(255, 255, 255, 0.08);
-      --btn-secondary-hover: rgba(255, 255, 255, 0.15);
+      --dialog-bg: #171717;
+      --btn-secondary-bg: transparent;
+      --btn-secondary-hover: #262626;
       
-      --font-ui: system-ui, -apple-system, sans-serif;
-      --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
-      --radius-lg: 16px;
-      --radius-sm: 8px;
-      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', Courier, monospace;
+      --radius-lg: 8px;
+      --radius-sm: 6px;
+      --transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     }
 
     /* Light Mode */
     html[data-theme="light"] {
-      --bg-main: #f8fafc;
-      --bg-surface: rgba(255, 255, 255, 0.85);
-      --border-color: rgba(0, 0, 0, 0.1);
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --primary: #0080ff;
-      --primary-glow: rgba(0, 128, 255, 0.2);
+      --bg-main: #fafafa;
+      --bg-surface: #ffffff;
+      --border-color: #e5e5e5;
+      --text-main: #171717;
+      --text-muted: #737373;
+      --primary: #000000;
+      --primary-text: #ffffff;
+      --primary-hover: #262626;
       --success: #059669;
       --warning: #d97706;
       --error: #dc2626;
       --dialog-bg: #ffffff;
-      --btn-primary-text: #ffffff;
-      --btn-secondary-bg: rgba(0, 0, 0, 0.05);
-      --btn-secondary-hover: rgba(0, 0, 0, 0.1);
+      --btn-secondary-bg: transparent;
+      --btn-secondary-hover: #f5f5f5;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--bg-main);
-      background-image: 
-        radial-gradient(at 0% 0%, var(--primary-glow) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, var(--primary-glow) 0px, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-ui);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.5rem;
       line-height: 1.5;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
 
-    header { max-width: 1200px; width: 100%; margin: 0 auto 2rem auto; text-align: center; position: relative; }
+    header { max-width: 1200px; width: 100%; margin: 0 auto 2rem auto; position: relative; }
     
     h1 {
-      font-size: clamp(1.8rem, 4vw, 2.75rem);
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-      padding-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
     }
 
-    header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+    header p { color: var(--text-muted); font-size: 0.95rem; max-width: 600px; }
 
     /* Top Controls (Theme & Language) */
     .top-controls {
@@ -88,117 +81,116 @@
 
     .icon-btn {
       background: var(--btn-secondary-bg); border: 1px solid var(--border-color);
-      color: var(--text-main); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm);
-      cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: var(--transition);
-      display: flex; align-items: center; justify-content: center;
+      color: var(--text-main); padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
+      cursor: pointer; font-weight: 500; font-size: 0.85rem; transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
     }
-    .icon-btn:hover { background: var(--btn-secondary-hover); border-color: var(--primary); }
+    .icon-btn:hover { background: var(--btn-secondary-hover); }
 
     main {
       max-width: 1200px; width: 100%; margin: 0 auto;
       display: grid; grid-template-columns: 1fr; gap: 2rem; flex: 1;
     }
 
-    @media (min-width: 900px) { main { grid-template-columns: 1fr 380px; } }
+    @media (min-width: 900px) { main { grid-template-columns: 1fr 340px; } }
 
-    .glass-panel {
+    .panel {
       background: var(--bg-surface);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
     }
 
-    form { display: flex; flex-direction: column; gap: 1.5rem; height: 100%; }
-    .field-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    form { display: flex; flex-direction: column; gap: 1.25rem; height: 100%; }
+    .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
     
     label {
-      font-weight: 600; font-size: 0.95rem;
+      font-weight: 500; font-size: 0.9rem;
       display: flex; justify-content: space-between; align-items: center;
     }
 
-    .helper-text { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+    .helper-text { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
 
     input[type="text"], select, textarea {
       width: 100%; background: var(--bg-main);
       border: 1px solid var(--border-color); border-radius: var(--radius-sm);
-      padding: 0.85rem 1rem; color: var(--text-main);
-      font-family: inherit; font-size: 1rem; transition: var(--transition);
+      padding: 0.75rem 1rem; color: var(--text-main);
+      font-family: inherit; font-size: 0.95rem; transition: var(--transition);
     }
 
-    textarea { font-family: var(--font-mono); min-height: 320px; resize: vertical; line-height: 1.6; flex: 1; }
+    textarea { font-family: var(--font-mono); min-height: 400px; resize: vertical; line-height: 1.6; flex: 1; font-size: 0.85rem; }
 
     input:focus, select:focus, textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px var(--primary-glow);
+      border-color: var(--text-muted);
       outline: none;
     }
 
     aside { display: flex; flex-direction: column; gap: 1.5rem; }
 
     .stats-card {
-      background: var(--bg-main); border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm); padding: 1.25rem;
-      display: flex; flex-direction: column; gap: 1rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
     }
 
-    .stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
-    .stat-value { font-family: var(--font-mono); font-weight: 700; color: var(--primary); }
-    .stat-highlight { color: var(--text-main); font-size: 1rem; }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
+    .stat-value { font-family: var(--font-mono); font-weight: 600; color: var(--text-main); }
+    .stat-highlight { color: var(--text-main); }
 
     .badge {
-      background: var(--primary-glow); color: var(--primary);
-      padding: 0.25rem 0.6rem; border-radius: 999px;
-      font-size: 0.75rem; font-weight: 700; border: 1px solid var(--primary);
+      background: var(--btn-secondary-hover); color: var(--text-main);
+      padding: 0.2rem 0.5rem; border-radius: 4px;
+      font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border-color);
     }
 
-    .gauge-container { display: flex; flex-direction: column; gap: 0.4rem; }
-    .gauge-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); }
-    .gauge-track { width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden; }
-    .gauge-fill { height: 100%; width: 0%; background: var(--success); transition: width 0.15s ease, background-color 0.15s ease; }
+    .gauge-container { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; }
+    .gauge-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
+    .gauge-track { width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden; }
+    .gauge-fill { height: 100%; width: 0%; background: var(--success); transition: width 0.1s linear, background-color 0.2s ease; }
 
-    .actions-group { display: flex; flex-direction: column; gap: 0.85rem; }
+    .actions-group { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
     
     .btn {
-      width: 100%; padding: 1rem; border-radius: var(--radius-sm);
-      font-weight: 700; font-size: 1rem; cursor: pointer;
+      width: 100%; padding: 0.75rem; border-radius: var(--radius-sm);
+      font-weight: 500; font-size: 0.9rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
       transition: var(--transition); border: none; text-decoration: none;
     }
 
     .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-primary { background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%); color: var(--btn-primary-text); box-shadow: 0 0 20px var(--primary-glow); }
-    .btn-primary:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--primary-glow); }
+    .btn-primary { background: var(--primary); color: var(--primary-text); }
+    .btn-primary:not(:disabled):hover { background: var(--primary-hover); }
+    
     .btn-secondary { background: var(--btn-secondary-bg); color: var(--text-main); border: 1px solid var(--border-color); }
-    .btn-secondary:not(:disabled):hover { background: var(--btn-secondary-hover); border-color: var(--primary); }
-    .btn-danger { background: transparent; color: var(--error); border: 1px dashed var(--error); }
-    .btn-danger:not(:disabled):hover { background: var(--error); color: var(--bg-main); }
+    .btn-secondary:not(:disabled):hover { background: var(--btn-secondary-hover); }
+    
+    .btn-danger { background: transparent; color: var(--error); border: 1px solid var(--border-color); }
+    .btn-danger:not(:disabled):hover { background: rgba(239, 68, 68, 0.1); border-color: var(--error); }
+
+    .svg-icon { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
     /* Accessible Toast System */
     .toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; pointer-events: none; }
     .toast {
-      background: var(--dialog-bg); color: var(--text-main); border: 1px solid var(--primary);
-      padding: 1rem 1.5rem; border-radius: var(--radius-sm);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      font-weight: 600; display: flex; align-items: center; gap: 0.75rem;
-      opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease;
+      background: var(--dialog-bg); color: var(--text-main); border: 1px solid var(--border-color);
+      padding: 0.85rem 1.25rem; border-radius: var(--radius-sm);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;
+      opacity: 0; transform: translateY(10px); transition: opacity 0.2s ease, transform 0.2s ease;
       max-width: 350px;
     }
     .toast.visible { opacity: 1; transform: translateY(0); }
 
-    /* Native Dialog (No confirm() popup) */
+    /* Native Dialog */
     dialog {
-      border: 1px solid var(--error); border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color); border-radius: var(--radius-lg);
       background: var(--dialog-bg); color: var(--text-main);
-      padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      max-width: 400px; width: 90%;
-      margin: auto;
+      padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px; width: 90%; margin: auto;
     }
-    dialog::backdrop { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
-    dialog h2 { margin-bottom: 1rem; font-size: 1.2rem; }
-    dialog .dialog-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    dialog::backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
+    dialog h2 { margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600; }
+    dialog p { font-size: 0.9rem; color: var(--text-muted); }
+    dialog .dialog-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-end; }
+    dialog .btn { width: auto; padding: 0.5rem 1rem; }
 
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
@@ -209,112 +201,123 @@
 
   <header>
     <div class="top-controls">
-      <button id="lang-toggle" class="icon-btn" aria-label="Switch Language / Changer de langue">FR / EN</button>
-      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme / Basculer le thème">🌙</button>
+      <button id="lang-toggle" class="icon-btn" aria-label="Switch Language / Changer de langue">
+        <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span id="lang-label">EN</span>
+      </button>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme / Basculer le thème">
+        <svg id="theme-icon" class="svg-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
     </div>
     <h1>StateURL Studio</h1>
-    <p data-i18n="headerDesc">Créez, compressez et partagez des configurations. Tout est stocké dans l'URL, sans serveur ni base de données.</p>
+    <p data-i18n="headerDesc">Créez, compressez et partagez des configurations dans l'URL. Sans base de données.</p>
   </header>
 
   <main>
-    <section class="glass-panel" aria-labelledby="editor-title">
+    <section class="panel" aria-labelledby="editor-title">
       <h2 id="editor-title" class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);" data-i18n="srEditor">Éditeur de Sandbox</h2>
       <form id="sandbox-form" novalidate>
         <div class="field-group">
           <label for="input-title">
             <span data-i18n="labelTitle">Titre du document</span>
-            <span class="helper-text" data-i18n="helperTitle">Ex: Config Nginx PROD 2026</span>
+            <span class="helper-text" data-i18n="helperTitle">Ex: Config Nginx PROD</span>
           </label>
           <input type="text" id="input-title" data-i18n-placeholder="phTitle" placeholder="Saisissez un titre..." autocomplete="off" autocorrect="off" spellcheck="false">
         </div>
 
         <div class="field-group">
           <label for="select-mode">
-            <span data-i18n="labelMode">Environnement & Syntaxe</span>
+            <span data-i18n="labelMode">Syntaxe</span>
           </label>
           <select id="select-mode">
-            <option value="plaintext" data-i18n="optPlain">Texte brut / Note générale</option>
-            <option value="json" data-i18n="optJson">Configuration JSON / Payload API</option>
+            <option value="plaintext" data-i18n="optPlain">Texte brut</option>
+            <option value="json" data-i18n="optJson">JSON / Payload API</option>
             <option value="env" data-i18n="optEnv">Variables d'environnement (.env)</option>
-            <option value="sql" data-i18n="optSql">Requêtes / Schéma SQL</option>
-            <option value="markdown" data-i18n="optMd">Documentation Markdown</option>
+            <option value="sql" data-i18n="optSql">SQL</option>
+            <option value="markdown" data-i18n="optMd">Markdown</option>
           </select>
         </div>
 
-        <div class="field-group" style="flex: 1; display: flex; flex-direction: column;">
+        <div class="field-group" style="flex: 1; display: flex; flex-direction: column; margin-top: 0.5rem;">
           <label for="input-content">
-            <span data-i18n="labelContent">Contenu du Sandbox</span>
-            <span class="helper-text" data-i18n="helperContent">Mise à jour en direct (0 ms)</span>
+            <span data-i18n="labelContent">Contenu</span>
+            <span class="helper-text" data-i18n="helperContent">Synchrone (0 ms)</span>
           </label>
-          <textarea id="input-content" data-i18n-placeholder="phContent" placeholder="Collez ou rédigez votre texte ici..." autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" required></textarea>
+          <textarea id="input-content" data-i18n-placeholder="phContent" placeholder="Saisissez vos données ici..." autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" required></textarea>
         </div>
       </form>
     </section>
 
-    <aside class="glass-panel" aria-labelledby="actions-title">
-      <h2 id="actions-title" style="font-size: 1.2rem; margin-bottom: 0.5rem;" data-i18n="titleTelemetry">Télémétrie en direct</h2>
+    <aside class="panel" aria-labelledby="actions-title">
+      <h2 id="actions-title" class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);" data-i18n="titleTelemetry">Télémétrie & Actions</h2>
       
       <div class="stats-card" role="region" aria-label="Statistiques de compression">
-        <div class="stat-row" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
-          <span data-i18n="statChars">Caractères saisis :</span>
+        <div class="stat-row">
+          <span data-i18n="statChars">Caractères :</span>
           <span id="stat-chars" class="stat-value stat-highlight">0</span>
         </div>
-
         <div class="stat-row">
-          <span data-i18n="statRaw">Taille des données :</span>
+          <span data-i18n="statRaw">Poids brut :</span>
           <span id="stat-raw" class="stat-value">0 B</span>
         </div>
         <div class="stat-row">
-          <span data-i18n="statCompressed">Taille URL compressée :</span>
+          <span data-i18n="statCompressed">Poids compressé :</span>
           <span id="stat-compressed" class="stat-value">0 B</span>
         </div>
-        <div class="stat-row">
-          <span data-i18n="statRatio">Efficacité Gzip :</span>
+        <div class="stat-row" style="margin-top: 0.25rem;">
+          <span data-i18n="statRatio">Ratio Gzip :</span>
           <span id="stat-ratio" class="badge">0%</span>
         </div>
 
-        <div class="gauge-container" style="margin-top: 0.5rem;">
+        <div class="gauge-container">
           <div class="gauge-label">
-            <span data-i18n="gaugeStandard">Capacité URL standard (2 KB)</span>
+            <span data-i18n="gaugeStandard">Limite d'URL (2 KB)</span>
             <span id="gauge-percent">0%</span>
           </div>
           <div class="gauge-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Capacité de l'URL utilisée">
             <div id="gauge-fill" class="gauge-fill"></div>
           </div>
-          <span id="gauge-warning" class="helper-text" style="color: var(--success);" role="status" data-i18n="gaugeOk">✔ Compatible tous navigateurs & serveurs</span>
+          <span id="gauge-warning" class="helper-text" style="color: var(--success); display:flex; align-items:center; gap:0.25rem; margin-top:0.25rem;" role="status">
+            <svg class="svg-icon" style="width:12px;height:12px;" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span data-i18n="gaugeOk">Compatible</span>
+          </span>
         </div>
       </div>
 
       <div class="actions-group" id="actions-container">
         <button type="button" id="btn-copy" class="btn btn-primary">
-          <span data-i18n="btnCopy">⚡ Copier le lien partageable</span>
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span data-i18n="btnCopy">Copier l'URL</span>
         </button>
         <a id="btn-test" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <span data-i18n="btnTest">↗ Tester dans un nouvel onglet</span>
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span data-i18n="btnTest">Vérifier le lien généré</span>
         </a>
         <button type="button" id="btn-reset" class="btn btn-danger">
-          <span data-i18n="btnReset">🗑 Réinitialiser le Sandbox</span>
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span data-i18n="btnReset">Effacer</span>
         </button>
       </div>
 
-      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-muted); text-align: center;" data-i18n="footerText">
-        🔒 100% Local. Zéro serveur.
+      <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-muted); text-align: center; display:flex; align-items:center; justify-content:center; gap:0.3rem;" data-i18n="footerText">
+        <svg class="svg-icon" style="width:12px;height:12px;" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        100% Local. Zéro serveur.
       </div>
     </aside>
   </main>
 
   <dialog id="reset-dialog" aria-labelledby="dialog-title">
-    <h2 id="dialog-title" data-i18n="dialogTitle">Confirmer la réinitialisation</h2>
-    <p data-i18n="dialogDesc">Voulez-vous vraiment effacer ce Sandbox et réinitialiser l'URL ? Cette action est irréversible.</p>
+    <h2 id="dialog-title" data-i18n="dialogTitle">Réinitialisation</h2>
+    <p data-i18n="dialogDesc">Effacer les données en cours et purger l'URL ? Cette action est irréversible.</p>
     <div class="dialog-actions">
-      <button type="button" id="btn-cancel-reset" class="btn btn-secondary" style="padding: 0.75rem;" data-i18n="btnCancel">Annuler</button>
-      <button type="button" id="btn-confirm-reset" class="btn btn-danger" style="padding: 0.75rem;" data-i18n="btnConfirm">Confirmer</button>
+      <button type="button" id="btn-cancel-reset" class="btn btn-secondary" data-i18n="btnCancel">Annuler</button>
+      <button type="button" id="btn-confirm-reset" class="btn btn-danger" data-i18n="btnConfirm">Confirmer</button>
     </div>
   </dialog>
 
   <div class="toast-container" aria-live="assertive" aria-atomic="true">
     <div id="toast" class="toast" role="alert" hidden>
-      <span aria-hidden="true">✔</span>
+      <svg id="toast-icon" class="svg-icon" style="color: var(--success);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
       <span id="toast-message"></span>
     </div>
   </div>
@@ -323,95 +326,91 @@
     (() => {
       'use strict';
 
-      // --- DICTIONNAIRE I18N (INTERNATIONALISATION) ---
+      // --- DICTIONNAIRE I18N ---
       const TRANSLATIONS = {
         fr: {
-          headerDesc: "Créez, compressez et partagez des configurations. Tout est stocké dans l'URL, sans serveur ni base de données.",
+          headerDesc: "Créez, compressez et partagez des configurations dans l'URL. Sans base de données.",
           srEditor: "Éditeur de Sandbox",
           labelTitle: "Titre du document",
           helperTitle: "Ex: Config Nginx PROD",
           phTitle: "Saisissez un titre...",
-          labelMode: "Environnement & Syntaxe",
-          optPlain: "Texte brut / Note générale",
-          optJson: "Configuration JSON / Payload API",
+          labelMode: "Syntaxe",
+          optPlain: "Texte brut",
+          optJson: "JSON / Payload API",
           optEnv: "Variables d'environnement (.env)",
-          optSql: "Requêtes / Schéma SQL",
-          optMd: "Documentation Markdown",
-          labelContent: "Contenu du Sandbox",
-          helperContent: "Mise à jour en direct (0 ms)",
-          phContent: "Collez ou rédigez votre texte ici...",
-          titleTelemetry: "Télémétrie en direct",
-          statChars: "Caractères saisis :",
-          statRaw: "Taille des données :",
-          statCompressed: "Taille URL compressée :",
-          statRatio: "Efficacité Gzip :",
-          gaugeStandard: "Capacité URL standard (2 KB)",
-          gaugeOk: "✔ Compatible tous navigateurs & serveurs",
-          gaugeWarn: "✔ Compatible (approche de la limite 2 KB)",
-          gaugeErr: "⚠ Risque de troncature sur anciens serveurs",
-          btnCopy: "⚡ Copier le lien partageable",
-          btnTest: "↗ Tester dans un nouvel onglet",
-          btnReset: "🗑 Réinitialiser le Sandbox",
-          footerText: "🔒 100% Local. Zéro serveur.",
-          dialogTitle: "Confirmer la réinitialisation",
-          dialogDesc: "Voulez-vous vraiment effacer ce Sandbox et réinitialiser l'URL ? Cette action est irréversible.",
+          optSql: "SQL",
+          optMd: "Markdown",
+          labelContent: "Contenu",
+          helperContent: "Synchrone (0 ms)",
+          phContent: "Saisissez vos données ici...",
+          titleTelemetry: "Télémétrie & Actions",
+          statChars: "Caractères :",
+          statRaw: "Poids brut :",
+          statCompressed: "Poids compressé :",
+          statRatio: "Ratio Gzip :",
+          gaugeStandard: "Limite d'URL (2 KB)",
+          gaugeOk: "Compatible",
+          gaugeWarn: "Approche de la limite (2 KB)",
+          gaugeErr: "Risque de troncature",
+          btnCopy: "Copier l'URL",
+          btnTest: "Vérifier le lien généré",
+          btnReset: "Effacer",
+          footerText: "100% Local. Zéro serveur.",
+          dialogTitle: "Réinitialisation",
+          dialogDesc: "Effacer les données en cours et purger l'URL ? Cette action est irréversible.",
           btnCancel: "Annuler",
           btnConfirm: "Confirmer",
-          msgCopied: "⚡ Lien copié dans le presse-papier !",
-          msgCopyFail: "❌ Erreur de copie automatique.",
-          msgReset: "🗑 Sandbox réinitialisé avec succès.",
-          msgRestored: "✔ Sandbox restauré depuis le lien !",
-          msgCorrupt: "⚠ Lien illisible ou corrompu.",
-          msgUnsupported: "❌ API CompressionStream non supportée par votre navigateur",
+          msgCopied: "URL copiée dans le presse-papier.",
+          msgCopyFail: "Erreur de copie.",
+          msgReset: "Données purgées.",
+          msgRestored: "État restauré depuis l'URL.",
+          msgCorrupt: "URL illisible ou corrompue.",
+          msgUnsupported: "API CompressionStream non supportée.",
           txtChars: "car.",
           txtWord: "mot",
-          txtWords: "mots",
-          themeDark: "🌙",
-          themeLight: "☀️"
+          txtWords: "mots"
         },
         en: {
-          headerDesc: "Create, compress, and share configurations. Everything is stored in the URL, no servers, no databases.",
+          headerDesc: "Create, compress, and share configs via URL. No database required.",
           srEditor: "Sandbox Editor",
           labelTitle: "Document Title",
           helperTitle: "Ex: Nginx PROD Config",
           phTitle: "Enter a title...",
-          labelMode: "Environment & Syntax",
-          optPlain: "Plain Text / General Note",
-          optJson: "JSON Config / API Payload",
+          labelMode: "Syntax",
+          optPlain: "Plain Text",
+          optJson: "JSON / API Payload",
           optEnv: "Environment Variables (.env)",
-          optSql: "SQL Queries / Schema",
-          optMd: "Markdown Documentation",
-          labelContent: "Sandbox Content",
-          helperContent: "Live update (0 ms)",
-          phContent: "Paste or write your text here...",
-          titleTelemetry: "Live Telemetry",
-          statChars: "Characters typed :",
-          statRaw: "Raw Data Size :",
-          statCompressed: "Compressed URL Size :",
-          statRatio: "Gzip Efficiency :",
-          gaugeStandard: "Standard URL Capacity (2 KB)",
-          gaugeOk: "✔ Compatible with all browsers & servers",
-          gaugeWarn: "✔ Compatible (approaching 2 KB limit)",
-          gaugeErr: "⚠ Truncation risk on legacy servers",
-          btnCopy: "⚡ Copy shareable link",
-          btnTest: "↗ Test in a new tab",
-          btnReset: "🗑 Reset Sandbox",
-          footerText: "🔒 100% Local. Zero servers.",
-          dialogTitle: "Confirm Reset",
-          dialogDesc: "Are you sure you want to clear this Sandbox and reset the URL? This action is irreversible.",
+          optSql: "SQL",
+          optMd: "Markdown",
+          labelContent: "Content",
+          helperContent: "Synchronous (0 ms)",
+          phContent: "Enter your data here...",
+          titleTelemetry: "Telemetry & Actions",
+          statChars: "Characters :",
+          statRaw: "Raw size :",
+          statCompressed: "Compressed size :",
+          statRatio: "Gzip ratio :",
+          gaugeStandard: "URL Limit (2 KB)",
+          gaugeOk: "Compatible",
+          gaugeWarn: "Approaching limit (2 KB)",
+          gaugeErr: "Truncation risk",
+          btnCopy: "Copy URL",
+          btnTest: "Verify generated link",
+          btnReset: "Clear",
+          footerText: "100% Local. Zero servers.",
+          dialogTitle: "Reset Data",
+          dialogDesc: "Clear current data and purge the URL? This action cannot be undone.",
           btnCancel: "Cancel",
           btnConfirm: "Confirm",
-          msgCopied: "⚡ Link copied to clipboard!",
-          msgCopyFail: "❌ Automatic copy failed.",
-          msgReset: "🗑 Sandbox reset successfully.",
-          msgRestored: "✔ Sandbox restored from link!",
-          msgCorrupt: "⚠ Link unreadable or corrupted.",
-          msgUnsupported: "❌ CompressionStream API not supported by your browser",
+          msgCopied: "URL copied to clipboard.",
+          msgCopyFail: "Copy failed.",
+          msgReset: "Data purged.",
+          msgRestored: "State restored from URL.",
+          msgCorrupt: "Unreadable or corrupted URL.",
+          msgUnsupported: "CompressionStream API not supported.",
           txtChars: "chars",
           txtWord: "word",
-          txtWords: "words",
-          themeDark: "🌙",
-          themeLight: "☀️"
+          txtWords: "words"
         }
       };
 
@@ -437,8 +436,19 @@
         actionsContainer: document.getElementById('actions-container'),
         toast: document.getElementById('toast'),
         toastMessage: document.getElementById('toast-message'),
+        toastIcon: document.getElementById('toast-icon'),
         themeToggle: document.getElementById('theme-toggle'),
-        langToggle: document.getElementById('lang-toggle')
+        themeIcon: document.getElementById('theme-icon'),
+        langToggle: document.getElementById('lang-toggle'),
+        langLabel: document.getElementById('lang-label')
+      };
+
+      // SVG Definitions for JS injection
+      const SVGS = {
+        moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>',
+        sun: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>',
+        check: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>',
+        alert: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>'
       };
 
       const CONFIG = { 
@@ -449,7 +459,6 @@
       };
       
       let state = { title: '', mode: 'plaintext', content: '' };
-      
       let isCompressing = false;
       let pendingUpdate = false;
       let isUpdatingFromUrl = false;
@@ -460,7 +469,6 @@
 
       const isCompressionSupported = typeof CompressionStream !== 'undefined' && typeof DecompressionStream !== 'undefined';
 
-      // --- MOTEUR DE COMPRESSION ---
       const CompressionEngine = {
         async compress(jsonString) {
           if (!isCompressionSupported || !jsonString) return '';
@@ -475,10 +483,7 @@
               binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
             }
             return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-          } catch (e) { 
-            console.error('Erreur de compression :', e);
-            return null; 
-          }
+          } catch (e) { return null; }
         },
         async decompress(base64UrlSafe) {
           if (!isCompressionSupported || !base64UrlSafe) return null;
@@ -486,15 +491,12 @@
             let cleanBase64 = decodeURIComponent(base64UrlSafe);
             cleanBase64 = cleanBase64.replace(/-/g, '+').replace(/_/g, '/');
             while (cleanBase64.length % 4) cleanBase64 += '=';
-            
             const binary = atob(cleanBase64);
             const bytes = new Uint8Array(binary.length);
             for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
             const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
             return JSON.parse(await new Response(stream).text());
-          } catch (e) { 
-            return null; 
-          }
+          } catch (e) { return null; }
         }
       };
 
@@ -509,15 +511,18 @@
       function showToast(msgKey, isErr = false) {
         if (toastTimer) clearTimeout(toastTimer);
         DOM.toastMessage.textContent = TRANSLATIONS[currentLang][msgKey];
-        DOM.toast.style.borderColor = isErr ? 'var(--error)' : 'var(--primary)';
+        DOM.toast.style.borderColor = isErr ? 'var(--error)' : 'var(--border-color)';
+        DOM.toastIcon.innerHTML = isErr ? SVGS.alert : SVGS.check;
+        DOM.toastIcon.style.color = isErr ? 'var(--error)' : 'var(--success)';
+        
         DOM.toast.hidden = false; 
         void DOM.toast.offsetWidth; 
         DOM.toast.classList.add('visible');
 
         toastTimer = setTimeout(() => {
           DOM.toast.classList.remove('visible');
-          setTimeout(() => { DOM.toast.hidden = true; }, 300);
-        }, 3500);
+          setTimeout(() => { DOM.toast.hidden = true; }, 200);
+        }, 3000);
       }
 
       function updateInstantMetrics() {
@@ -536,29 +541,18 @@
         state.content = text;
 
         if (debounceTimer) clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          triggerSafeCompression();
-        }, 300);
+        debounceTimer = setTimeout(() => { triggerSafeCompression(); }, 300);
       }
 
       async function triggerSafeCompression() {
         if (!isCompressionSupported) return;
-        if (isCompressing) {
-          pendingUpdate = true;
-          return;
-        }
-
+        if (isCompressing) { pendingUpdate = true; return; }
         isCompressing = true;
-        try {
-          await updateCompressedUrl();
-        } catch (e) {
-          console.error(e);
-        } finally {
+        try { await updateCompressedUrl(); } 
+        catch (e) { console.error(e); } 
+        finally {
           isCompressing = false;
-          if (pendingUpdate) {
-            pendingUpdate = false;
-            triggerSafeCompression();
-          }
+          if (pendingUpdate) { pendingUpdate = false; triggerSafeCompression(); }
         }
       }
 
@@ -578,24 +572,29 @@
         const percent = Math.min(Math.round((compressedSize / CONFIG.SAFE_URL_LIMIT) * 100), 100);
         DOM.gaugeFill.style.width = `${percent}%`;
         
-        // Fix string capacity layout based on language
         DOM.gaugePercent.textContent = `${percent}% (${compressedSize}/${CONFIG.SAFE_URL_LIMIT} ${t.txtChars})`;
         DOM.gaugeProgress.setAttribute('aria-valuenow', percent);
+
+        const gaugeWarningSpan = DOM.gaugeWarning.querySelector('span');
+        const gaugeWarningSvg = DOM.gaugeWarning.querySelector('svg');
 
         if (compressedSize > CONFIG.SAFE_URL_LIMIT) {
           DOM.gaugeFill.style.backgroundColor = 'var(--error)';
           currentGaugeStatus = 'gaugeErr';
           DOM.gaugeWarning.style.color = 'var(--error)';
+          gaugeWarningSvg.innerHTML = SVGS.alert;
         } else if (compressedSize > CONFIG.SAFE_URL_LIMIT * 0.75) {
           DOM.gaugeFill.style.backgroundColor = 'var(--warning)';
           currentGaugeStatus = 'gaugeWarn';
           DOM.gaugeWarning.style.color = 'var(--warning)';
+          gaugeWarningSvg.innerHTML = SVGS.alert;
         } else {
           DOM.gaugeFill.style.backgroundColor = 'var(--success)';
           currentGaugeStatus = 'gaugeOk';
           DOM.gaugeWarning.style.color = 'var(--success)';
+          gaugeWarningSvg.innerHTML = SVGS.check;
         }
-        DOM.gaugeWarning.textContent = t[currentGaugeStatus];
+        gaugeWarningSpan.textContent = t[currentGaugeStatus];
 
         const newUrl = `${window.location.pathname}${window.location.search}#s=${compressedBase64}`;
         isUpdatingFromUrl = true;
@@ -607,10 +606,7 @@
       }
 
       async function copyShareableLink() {
-        if (!isCompressionSupported) {
-          showToast('msgUnsupported', true);
-          return;
-        }
+        if (!isCompressionSupported) { showToast('msgUnsupported', true); return; }
         const url = window.location.href;
         try {
           await navigator.clipboard.writeText(url);
@@ -626,13 +622,8 @@
       }
 
       function openResetDialog() {
-        if (typeof DOM.resetDialog.showModal === 'function') {
-          DOM.resetDialog.showModal();
-        } else {
-          if (confirm(TRANSLATIONS[currentLang].dialogDesc)) {
-            executeReset();
-          }
-        }
+        if (typeof DOM.resetDialog.showModal === 'function') { DOM.resetDialog.showModal(); } 
+        else { if (confirm(TRANSLATIONS[currentLang].dialogDesc)) { executeReset(); } }
       }
 
       function executeReset() {
@@ -653,7 +644,7 @@
 
       async function loadFromCurrentState() {
         if (!isCompressionSupported) {
-          DOM.gaugeWarning.textContent = TRANSLATIONS[currentLang].msgUnsupported;
+          DOM.gaugeWarning.querySelector('span').textContent = TRANSLATIONS[currentLang].msgUnsupported;
           DOM.gaugeWarning.style.color = 'var(--error)';
           DOM.btnCopy.disabled = true;
           showToast('msgUnsupported', true);
@@ -669,7 +660,6 @@
           if (decompressed && typeof decompressed === 'object') {
             state = { ...state, ...decompressed };
             loaded = true;
-            // Delay toast slightly to ensure UI is ready
             setTimeout(() => showToast('msgRestored'), 100);
           } else {
             setTimeout(() => showToast('msgCorrupt', true), 100);
@@ -691,10 +681,9 @@
         updateInstantMetrics();
       }
 
-      // --- GESTION DU THÈME & LANGUE ---
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
-        DOM.themeToggle.textContent = theme === 'dark' ? TRANSLATIONS[currentLang].themeLight : TRANSLATIONS[currentLang].themeDark;
+        DOM.themeIcon.innerHTML = theme === 'dark' ? SVGS.sun : SVGS.moon;
         try { localStorage.setItem(CONFIG.THEME_KEY, theme); } catch(e) {}
       }
 
@@ -702,45 +691,33 @@
         currentLang = lang;
         const t = TRANSLATIONS[lang];
         
-        // Update all data-i18n elements
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if (t[key]) el.textContent = t[key];
         });
 
-        // Update all data-i18n-placeholder elements
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
           const key = el.getAttribute('data-i18n-placeholder');
           if (t[key]) el.placeholder = t[key];
         });
 
-        DOM.langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
-        DOM.gaugeWarning.textContent = t[currentGaugeStatus];
+        DOM.langLabel.textContent = lang === 'fr' ? 'EN' : 'FR';
+        if(DOM.gaugeWarning.querySelector('span')) {
+            DOM.gaugeWarning.querySelector('span').textContent = t[currentGaugeStatus];
+        }
         
-        // Force update of dynamic texts (chars count)
         updateInstantMetrics();
-
-        // Update Theme Button Icon
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        DOM.themeToggle.textContent = currentTheme === 'dark' ? t.themeLight : t.themeDark;
-        
         try { localStorage.setItem(CONFIG.LANG_KEY, lang); } catch(e) {}
       }
 
       function initPreferences() {
-        // Theme
         const savedTheme = localStorage.getItem(CONFIG.THEME_KEY);
-        if (savedTheme) {
-          applyTheme(savedTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-          applyTheme('light');
-        }
+        if (savedTheme) { applyTheme(savedTheme); } 
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) { applyTheme('light'); }
 
-        // Language
         const savedLang = localStorage.getItem(CONFIG.LANG_KEY);
-        if (savedLang && TRANSLATIONS[savedLang]) {
-          applyLanguage(savedLang);
-        } else {
+        if (savedLang && TRANSLATIONS[savedLang]) { applyLanguage(savedLang); } 
+        else {
           const browserLang = navigator.language.slice(0, 2).toLowerCase();
           applyLanguage(browserLang === 'fr' ? 'fr' : 'en');
         }
@@ -764,18 +741,11 @@
         DOM.btnCancelReset.addEventListener('click', () => DOM.resetDialog.close());
         DOM.btnConfirmReset.addEventListener('click', executeReset);
 
-        window.addEventListener('hashchange', () => {
-          if (!isUpdatingFromUrl) loadFromCurrentState();
-        });
+        window.addEventListener('hashchange', () => { if (!isUpdatingFromUrl) loadFromCurrentState(); });
 
         window.addEventListener('keydown', (e) => {
-          if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-            e.preventDefault();
-            copyShareableLink();
-          }
-          if (e.key === 'Escape' && DOM.resetDialog.open) {
-            DOM.resetDialog.close();
-          }
+          if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); copyShareableLink(); }
+          if (e.key === 'Escape' && DOM.resetDialog.open) { DOM.resetDialog.close(); }
         });
 
         DOM.themeToggle.addEventListener('click', () => {
@@ -793,11 +763,8 @@
         });
       }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } 
+      else { init(); }
     })();
   </script>
 </body>
