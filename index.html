@@ -56,40 +56,42 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 2.5rem 1.5rem;
+      padding: 1.5rem; /* Densifié */
       line-height: 1.5;
     }
 
     :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
 
-    header { max-width: 1200px; width: 100%; margin: 0 auto 2rem auto; position: relative; }
+    header { 
+      max-width: 1200px; width: 100%; margin: 0 auto 1.5rem auto; 
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
     
+    .header-titles { display: flex; flex-direction: column; gap: 0.2rem; }
+
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 0.25rem;
       letter-spacing: -0.02em;
     }
 
-    header p { color: var(--text-muted); font-size: 0.95rem; max-width: 600px; }
+    header p { color: var(--text-muted); font-size: 0.9rem; }
 
-    /* Top Controls (Theme & Language) */
     .top-controls {
-      position: absolute; top: 0; right: 0;
       display: flex; gap: 0.5rem;
     }
 
     .icon-btn {
       background: var(--btn-secondary-bg); border: 1px solid var(--border-color);
       color: var(--text-main); padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);
-      cursor: pointer; font-weight: 500; font-size: 0.85rem; transition: var(--transition);
+      cursor: pointer; font-weight: 500; font-size: 0.8rem; transition: var(--transition);
       display: flex; align-items: center; justify-content: center; gap: 0.4rem;
     }
     .icon-btn:hover { background: var(--btn-secondary-hover); }
 
     main {
       max-width: 1200px; width: 100%; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr; gap: 2rem; flex: 1;
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem; flex: 1;
     }
 
     @media (min-width: 900px) { main { grid-template-columns: 1fr 340px; } }
@@ -98,14 +100,14 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 1.5rem;
+      padding: 1.25rem; /* Densifié */
     }
 
-    form { display: flex; flex-direction: column; gap: 1.25rem; height: 100%; }
+    form { display: flex; flex-direction: column; gap: 1rem; height: 100%; } /* Densifié */
     .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
     
     label {
-      font-weight: 500; font-size: 0.9rem;
+      font-weight: 500; font-size: 0.85rem;
       display: flex; justify-content: space-between; align-items: center;
     }
 
@@ -114,43 +116,43 @@
     input[type="text"], select, textarea {
       width: 100%; background: var(--bg-main);
       border: 1px solid var(--border-color); border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem; color: var(--text-main);
-      font-family: inherit; font-size: 0.95rem; transition: var(--transition);
+      padding: 0.6rem 0.75rem; color: var(--text-main); /* Densifié */
+      font-family: inherit; font-size: 0.9rem; transition: var(--transition);
     }
 
-    textarea { font-family: var(--font-mono); min-height: 400px; resize: vertical; line-height: 1.6; flex: 1; font-size: 0.85rem; }
+    textarea { font-family: var(--font-mono); min-height: 250px; resize: vertical; line-height: 1.5; flex: 1; font-size: 0.85rem; }
 
     input:focus, select:focus, textarea:focus {
       border-color: var(--text-muted);
       outline: none;
     }
 
-    aside { display: flex; flex-direction: column; gap: 1.5rem; }
+    aside { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .stats-card {
-      display: flex; flex-direction: column; gap: 0.8rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
     }
 
-    .stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted); }
     .stat-value { font-family: var(--font-mono); font-weight: 600; color: var(--text-main); }
     .stat-highlight { color: var(--text-main); }
 
     .badge {
       background: var(--btn-secondary-hover); color: var(--text-main);
-      padding: 0.2rem 0.5rem; border-radius: 4px;
+      padding: 0.15rem 0.4rem; border-radius: 4px;
       font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border-color);
     }
 
-    .gauge-container { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; }
+    .gauge-container { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
     .gauge-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
     .gauge-track { width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden; }
     .gauge-fill { height: 100%; width: 0%; background: var(--success); transition: width 0.1s linear, background-color 0.2s ease; }
 
-    .actions-group { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+    .actions-group { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
     
     .btn {
-      width: 100%; padding: 0.75rem; border-radius: var(--radius-sm);
-      font-weight: 500; font-size: 0.9rem; cursor: pointer;
+      width: 100%; padding: 0.6rem; border-radius: var(--radius-sm);
+      font-weight: 500; font-size: 0.85rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
       transition: var(--transition); border: none; text-decoration: none;
     }
@@ -165,32 +167,30 @@
     .btn-danger { background: transparent; color: var(--error); border: 1px solid var(--border-color); }
     .btn-danger:not(:disabled):hover { background: rgba(239, 68, 68, 0.1); border-color: var(--error); }
 
-    .svg-icon { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .svg-icon { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
-    /* Accessible Toast System */
-    .toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; pointer-events: none; }
+    .toast-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000; pointer-events: none; }
     .toast {
       background: var(--dialog-bg); color: var(--text-main); border: 1px solid var(--border-color);
-      padding: 0.85rem 1.25rem; border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem; border-radius: var(--radius-sm);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;
+      font-weight: 500; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;
       opacity: 0; transform: translateY(10px); transition: opacity 0.2s ease, transform 0.2s ease;
       max-width: 350px;
     }
     .toast.visible { opacity: 1; transform: translateY(0); }
 
-    /* Native Dialog */
     dialog {
       border: 1px solid var(--border-color); border-radius: var(--radius-lg);
       background: var(--dialog-bg); color: var(--text-main);
-      padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       max-width: 400px; width: 90%; margin: auto;
     }
     dialog::backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
-    dialog h2 { margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600; }
-    dialog p { font-size: 0.9rem; color: var(--text-muted); }
-    dialog .dialog-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-end; }
-    dialog .btn { width: auto; padding: 0.5rem 1rem; }
+    dialog h2 { margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; }
+    dialog p { font-size: 0.85rem; color: var(--text-muted); }
+    dialog .dialog-actions { display: flex; gap: 0.5rem; margin-top: 1.25rem; justify-content: flex-end; }
+    dialog .btn { width: auto; padding: 0.4rem 0.8rem; }
 
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
@@ -200,6 +200,10 @@
 <body>
 
   <header>
+    <div class="header-titles">
+      <h1>StateURL Studio</h1>
+      <p data-i18n="headerDesc">Créez, compressez et partagez des configurations dans l'URL. Sans base de données.</p>
+    </div>
     <div class="top-controls">
       <button id="lang-toggle" class="icon-btn" aria-label="Switch Language / Changer de langue">
         <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
@@ -209,8 +213,6 @@
         <svg id="theme-icon" class="svg-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
     </div>
-    <h1>StateURL Studio</h1>
-    <p data-i18n="headerDesc">Créez, compressez et partagez des configurations dans l'URL. Sans base de données.</p>
   </header>
 
   <main>
@@ -238,7 +240,7 @@
           </select>
         </div>
 
-        <div class="field-group" style="flex: 1; display: flex; flex-direction: column; margin-top: 0.5rem;">
+        <div class="field-group" style="flex: 1; display: flex; flex-direction: column;">
           <label for="input-content">
             <span data-i18n="labelContent">Contenu</span>
             <span class="helper-text" data-i18n="helperContent">Synchrone (0 ms)</span>
@@ -254,7 +256,7 @@
       <div class="stats-card" role="region" aria-label="Statistiques de compression">
         <div class="stat-row">
           <span data-i18n="statChars">Caractères :</span>
-          <span id="stat-chars" class="stat-value stat-highlight">0</span>
+          <span id="stat-chars" class="stat-value stat-highlight">0 (0 mot)</span>
         </div>
         <div class="stat-row">
           <span data-i18n="statRaw">Poids brut :</span>
@@ -264,7 +266,7 @@
           <span data-i18n="statCompressed">Poids compressé :</span>
           <span id="stat-compressed" class="stat-value">0 B</span>
         </div>
-        <div class="stat-row" style="margin-top: 0.25rem;">
+        <div class="stat-row" style="margin-top: 0.15rem;">
           <span data-i18n="statRatio">Ratio Gzip :</span>
           <span id="stat-ratio" class="badge">0%</span>
         </div>
@@ -277,7 +279,7 @@
           <div class="gauge-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Capacité de l'URL utilisée">
             <div id="gauge-fill" class="gauge-fill"></div>
           </div>
-          <span id="gauge-warning" class="helper-text" style="color: var(--success); display:flex; align-items:center; gap:0.25rem; margin-top:0.25rem;" role="status">
+          <span id="gauge-warning" class="helper-text" style="color: var(--success); display:flex; align-items:center; gap:0.25rem; margin-top:0.2rem;" role="status">
             <svg class="svg-icon" style="width:12px;height:12px;" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
             <span data-i18n="gaugeOk">Compatible</span>
           </span>
@@ -299,7 +301,7 @@
         </button>
       </div>
 
-      <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-muted); text-align: center; display:flex; align-items:center; justify-content:center; gap:0.3rem;" data-i18n="footerText">
+      <div style="margin-top: auto; font-size: 0.7rem; color: var(--text-muted); text-align: center; display:flex; align-items:center; justify-content:center; gap:0.3rem;" data-i18n="footerText">
         <svg class="svg-icon" style="width:12px;height:12px;" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         100% Local. Zéro serveur.
       </div>
@@ -326,7 +328,6 @@
     (() => {
       'use strict';
 
-      // --- DICTIONNAIRE I18N ---
       const TRANSLATIONS = {
         fr: {
           headerDesc: "Créez, compressez et partagez des configurations dans l'URL. Sans base de données.",
@@ -366,7 +367,6 @@
           msgRestored: "État restauré depuis l'URL.",
           msgCorrupt: "URL illisible ou corrompue.",
           msgUnsupported: "API CompressionStream non supportée.",
-          txtChars: "car.",
           txtWord: "mot",
           txtWords: "mots"
         },
@@ -408,7 +408,6 @@
           msgRestored: "State restored from URL.",
           msgCorrupt: "Unreadable or corrupted URL.",
           msgUnsupported: "CompressionStream API not supported.",
-          txtChars: "chars",
           txtWord: "word",
           txtWords: "words"
         }
@@ -443,7 +442,6 @@
         langLabel: document.getElementById('lang-label')
       };
 
-      // SVG Definitions for JS injection
       const SVGS = {
         moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>',
         sun: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>',
@@ -534,7 +532,7 @@
         const t = TRANSLATIONS[currentLang];
         const wordLabel = wordCount > 1 ? t.txtWords : t.txtWord;
         
-        DOM.statChars.textContent = `${charCount} ${t.txtChars} (${wordCount} ${wordLabel})`;
+        DOM.statChars.textContent = `${charCount} (${wordCount} ${wordLabel})`;
         
         state.title = DOM.inputTitle.value.trim();
         state.mode = DOM.selectMode.value;
@@ -572,7 +570,7 @@
         const percent = Math.min(Math.round((compressedSize / CONFIG.SAFE_URL_LIMIT) * 100), 100);
         DOM.gaugeFill.style.width = `${percent}%`;
         
-        DOM.gaugePercent.textContent = `${percent}% (${compressedSize}/${CONFIG.SAFE_URL_LIMIT} ${t.txtChars})`;
+        DOM.gaugePercent.textContent = `${percent}% (${compressedSize}/${CONFIG.SAFE_URL_LIMIT})`;
         DOM.gaugeProgress.setAttribute('aria-valuenow', percent);
 
         const gaugeWarningSpan = DOM.gaugeWarning.querySelector('span');
